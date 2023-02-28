@@ -3,23 +3,26 @@
 isPartTime=1
 isFullTime=2
 empRatePerHr=20
-empCheck=$((RANDOM%3))
+workingdays=20
+for ((day=1; day<=20; day++))
+do
+        randomCheck=$((RANDOM%3))
 
-
-case $empCheck in
-        $isFullTime)
-                empHrs=8
-                ;;
-        $isPartTime)
+        if [ $isFullTime -eq $randomCheck ]
+        then
+                empHrs=8;
+        elif [ $isPartTime -eq $randomCheck ]
+        then
                 empHrs=4
-                ;;
-        *)
+        else
                 empHrs=0
-                ;;
-esac
+        fi
 
-salary=$(($empHrs*$empRatePerHr));
-echo employee wage is $salary
+        salary=$(($empHrs*$empRatePerHr))
+        20dayssalary=$(($workingdays*$salary))
+done
+
+               
 
 
 
